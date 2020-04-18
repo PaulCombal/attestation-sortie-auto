@@ -1,1 +1,98 @@
-<h1>yolo</h1>
+<!doctype html>
+<html>
+	<head>
+		<style>
+			* {
+				font-family: Arial;
+			}
+
+			.container {
+				width: 90%;
+				margin: auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="row">
+				<h2 style="text-align: center; text-transform: uppercase;">Attestation de déplacement dérogatoire</h2>
+			</div>
+
+			<div class="row">
+				&nbsp;&nbsp;&nbsp;En application de l'article 3 du décret du 23 mars 2020 prescrivant les
+				mesures générales nécessaires pour faire face à l'épidémie de Covid19 
+				dans le cadre de l'état d'urgence sanitaire
+			</div>
+
+			<div class="row">
+				<p>
+					Je soussigné(e), 
+				</p>
+				<p>
+					Mme/M. : <span id="myname"></span>
+				</p>
+				<p>
+					Né(e) le : <span id="mybirth"></span>
+				</p>
+				<p>
+					À : <span id="mybirthplace"></span>
+				</p>
+				<p>
+					Demeurant : <span id="myplace"></span>
+				</p>
+			</div>
+
+			<div class="row">
+				<p>
+					certifie que mon déplacement est lié au motif suivant autorisé par l'article
+					3 du décret du 23 mars 2020 prescrivant les mesures générales nécessaires
+					pour faire face à l'épidémie de Covid19 dans le cadre de l'état d'urgence 
+					sanitaire :
+				</p>
+				<p id="reason"></p>
+			</div>
+
+			<div class="row">
+				<p>
+					Fait à : <span id="mycity"></span>
+				</p>
+				<p>
+					Le : <span id="exitdate"></span>
+					<br />
+					(Date et heure de début de sortie)
+				</p>
+			</div>
+		</div>
+
+
+		<script>
+			let queryDict = window.location.search.slice(1)
+                      .split('&')
+                      .reduce(function _reduce (/*Object*/ a, /*String*/ b) {
+                        b = b.split('=');
+                        a[b[0]] = decodeURIComponent(b[1]);
+                        return a;
+                      }, {});
+
+			["myname", "mybirth", "mybirthplace", "myplace", "mycity"].forEach(param => {
+				document.getElementById(param).innerText = queryDict[param];
+			});
+
+			document.getElementById("exitdate").innerText = new Date( Date.now() - 10 * 1000 * 60 ).toLocaleString().slice(0, -3);
+
+			// The fun part is ahead
+			const TEXT_REASON_0 = "Déplacements entre le domicile et le lieu d'exercice de l'activité professionnelle, lorsqu'ils sont indispensables à l'exercice d'activités ne pouvant être organisées sous forme de télétravail ou déplacements professionnels ne pouvant être différés.";
+			const TEXT_REASON_1 = "Déplacements pour effectuer des achats de fournitures nécessaires à l'activité professionnelle et des achats de première nécessité dans les établissements dont les activités demeurent autorisées (liste sur gouvernement.fr)";
+			const TEXT_REASON_2 = "flemme";
+			const TEXT_REASON_3 = "flemme";
+			const TEXT_REASON_4 = "Déplacements brefs, dans la limite d'une heure quotidienne et dans un rayon maximal d'un kilomètre autour du domicile, liés soit à l'activité physique individuelle des personnes, à l'exclusion de toute pratique sportive collective et de toute proximité avec d'autres personnes, soit à la promenade avec les seules personnes regroupées dans un même domicile, soit aux besoins des animaux de compagnie.";
+
+			const reasons = [TEXT_REASON_0, TEXT_REASON_1, TEXT_REASON_2, TEXT_REASON_3, TEXT_REASON_4];
+			document.getElementById("reason").innerText = reasons[parseInt(queryDict["reason"])];
+
+			window.print();
+			
+		</script>
+	</body>
+</html>
