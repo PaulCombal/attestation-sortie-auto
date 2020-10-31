@@ -1,13 +1,24 @@
-# attestation-sortie-auto
+# project
 
-https://paulcombal.github.io/attestation-sortie-auto/
+## Project setup
+```
+npm install
+```
 
-Formulaire auto-rempli, à pin dans les favoris. Généré il y a 10 minutes.
-Utiliser les paramètres get (uri encodés):
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-* myname
-* mybirth
-* myplace
-* mybirthplace
-* mycity
-* reason (de 0 à 4)
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
