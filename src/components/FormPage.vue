@@ -1,5 +1,5 @@
 <template>
-  <form action="/attestation" method="GET">
+  <form :action="getActionPage()" method="GET">
     <div class="titre-2">
       Remplissez en ligne votre déclaration numérique :
     </div>
@@ -72,7 +72,7 @@
 
       <div class="d-flex">
         <input id="reason2" type="checkbox" name="reason2"/>
-        <label for="reason1">
+        <label for="reason2">
           Déplacements pour effectuer des achats de fournitures nécessaires à l'activité professionnelle, des achats de
           première nécessité <a href="https://media.interieur.gouv.fr/deplacement-covid-19/#footnote3">[3]</a> dans des
           établissements dont les activités demeurent autorisées, le retrait de commande
@@ -173,6 +173,13 @@ export default {
     }
   },
   methods: {
+    getActionPage() {
+      const publicPath = process.env.NODE_ENV === 'production'
+          ? '/attestation-sortie-auto/'
+          : '/';
+
+      return publicPath + 'attestation';
+    },
     updateSignature(evt) {
       const file = evt.target.files[0];
       const toBase64 = file => new Promise((resolve, reject) => {
