@@ -6,7 +6,8 @@ Vue.config.productionTip = false
 
 const routes = {
   '/': FormPage,
-  '/attestation': AttestationPage
+  '/attestation': AttestationPage,
+  '/attestation-sortie-auto/attestation': AttestationPage
 }
 
 new Vue({
