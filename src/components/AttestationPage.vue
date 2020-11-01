@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="center">
-      <h2 style="font-family: auto">ATTESTATION DE DÉPLACEMENT DÉROGATOIRE</h2>
+      <h2 style="font-family: serif">ATTESTATION DE DÉPLACEMENT DÉROGATOIRE</h2>
     </div>
 
     <div class="center">
