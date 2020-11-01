@@ -44,8 +44,8 @@
     </div>
 
     <div>
-      <label>Fichier de signature</label>
-      <input type="file" @change="updateSignature"/>
+      <label>Fichier de signature (optionnel)</label>
+      <input type="file" @change="updateSignature" accept="image/*"/>
       <input type="hidden" name="signature" :value="base64sig">
     </div>
 
@@ -141,6 +141,11 @@
         Générer mon attestation
       </button>
     </div>
+
+    <div style="font-size: small; font-style: italic">
+      Le propriétaire de cette page n'est pas responsable de votre utilisation de ce site.
+      Il ne s'agit pas d'un site officiel du gouvernement français.
+    </div>
   </form>
 </template>
 
@@ -182,6 +187,7 @@ export default {
     },
     updateSignature(evt) {
       const file = evt.target.files[0];
+
       const toBase64 = file => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
@@ -189,7 +195,14 @@ export default {
         reader.onerror = error => reject(error);
       });
 
-      toBase64(file).then(res => this.base64sig = res);
+      toBase64(file).then(res => {
+        if (res.length > 7710) {
+          alert("Cette image est trop lourde. La taille recommandée maximale est de 200x90px. Vous pouvez continuer sans signature.");
+          evt.target.type = "text";
+          evt.target.type = "file";
+        }
+        this.base64sig = res;
+      });
     }
   }
 }
