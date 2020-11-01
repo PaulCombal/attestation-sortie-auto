@@ -149,7 +149,7 @@
         </div>
 
         <div style="flex: 1">
-          Signature: <img style="max-height: 5em" :src="GET.signature" alt="signature"/>
+          <span v-if="GET.signature">Signature: <img style="max-height: 5em" :src="GET.signature" alt="signature"/></span>
           Date de sortie: Le {{ getDateMinutesBeforeMounted().toLocaleString().slice(0, -3) }}
         </div>
       </div>
@@ -206,7 +206,9 @@ export default {
     // Yeah i'm a lazy ass
     Object.keys(this.GET).filter(key => key !== 'signature').forEach(key => {
       this.GET[key] = this.GET[key].split('+').join(' ');
-    })
+    });
+
+    window.print();
   },
   methods: {
     isReasonEnabled(int) {
