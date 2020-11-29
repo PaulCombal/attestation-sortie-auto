@@ -223,7 +223,7 @@ table {
 
 @font-face {
   font-family: "Trebuchet Regular";
-  src: url("/trebuc.ttf") format("truetype")
+  src: url("/attestation-sortie-auto/trebuc.ttf") format("truetype")
 }
 
 .at-page-bottom {
