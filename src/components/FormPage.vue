@@ -43,7 +43,7 @@
       <input name="postcode"/>
     </div>
 
-    <div>
+    <div v-if="false">
       <label>Fichier de signature (optionnel)</label>
       <input type="file" @change="updateSignature" accept="image/*"/>
       <input type="hidden" name="signature" :value="base64sig">
@@ -107,10 +107,11 @@
       <div class="d-flex">
         <input id="reason6" type="checkbox" name="reason6"/>
         <label for="reason6">
-          Déplacements brefs, dans la limite d'une heure quotidienne et dans un rayon maximal d'un kilomètre autour du
-          domicile, liés soit à l'activité physique individuelle des personnes, à l'exclusion de toute pratique sportive
-          collective et de toute proximité avec d'autres personnes, soit à la promenade avec les seules personnes
-          regroupées dans un même domicile, soit aux besoins des animaux de compagnie ;
+          Déplacements en plein air ou vers un lieu de plein air, sans changement du lieu de résidence, dans la limite
+          de trois heures quotidiennes et dans un rayon maximal de vingt kilomètres autour du domicile, liés soit à
+          l’activité physique ou aux loisirs individuels, à l’exclusion de toute pratique sportive collective et de
+          toute proximité avec d’autres personnes, soit à la promenade avec les seules personnes regroupées dans un même
+          domicile, soit aux besoins des animaux de compagnie ;
         </label>
       </div>
 
