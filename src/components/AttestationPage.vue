@@ -227,7 +227,7 @@ table {
 }
 
 .at-page-bottom {
-  position: fixed;
+  /*position: fixed;*/
   bottom: 0;
 }
 
